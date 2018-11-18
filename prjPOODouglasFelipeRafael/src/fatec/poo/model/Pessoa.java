@@ -5,6 +5,8 @@
  */
 package fatec.poo.model;
 
+import static java.lang.Integer.parseInt;
+
 /**
  *
  * @author Dougla
@@ -31,6 +33,18 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -63,8 +77,6 @@ public class Pessoa {
         this.cep = cep;
     }
 
-   
-
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
@@ -72,19 +84,16 @@ public class Pessoa {
      public void setCelular(String celular) {
         this.celular = celular;
     }
-     
-      
-
+    
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
- public void setEstadoCivil(String estadoCivil) {
+    public void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
     
-    
-     public void setRG(String rg) {
+    public void setRG(String rg) {
         this.rg = rg;
     }
 
@@ -95,6 +104,89 @@ public class Pessoa {
     public void setEmail(String email) {
         this.email = email;
     }
-     
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDataNasc() {
+        return dataNasc;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
     
+    public static boolean validarCPF(String cpf) {
+        cpf = cpf.replace(".", "").replace("-","");
+        int priDigito=0, segDigito=0, multi;
+
+        for(int i = 0; i < 9; i++) {
+            multi = (i+1) * parseInt(cpf.substring(i,(i+1)));
+            priDigito += multi;
+        }
+        priDigito %= 11; 
+        if(priDigito == 10) {
+            priDigito = 0;
+        }
+        
+        for(int j = 0; j < 10; j++) {
+            multi = (11-j) * parseInt(cpf.substring(j,(j+1)));
+            segDigito += multi;
+        }
+        segDigito *=10;
+        segDigito %=11;
+        if(segDigito == 10) {
+            segDigito = 0;
+        }
+        return(cpf.substring(9,11).equals((Integer.toString(priDigito) + Integer.toString(segDigito))));
+    }
 }

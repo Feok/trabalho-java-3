@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * @author Dougla
  */
 public class Instrutor extends Pessoa{
+
     private String formacao;
     private String areaAtuacao;
     private ArrayList<Turma> turmas;
@@ -22,6 +23,14 @@ public class Instrutor extends Pessoa{
 
     public void setAreaAtuacao(String AreaAtuacao) {
         this.areaAtuacao = AreaAtuacao;
+    }
+
+    public String getFormacao() {
+        return formacao;
+    }
+
+    public String getAreaAtuacao() {
+        return areaAtuacao;
     }
     
     public void addTurma(Turma turma){

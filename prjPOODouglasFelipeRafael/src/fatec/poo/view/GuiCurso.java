@@ -122,8 +122,11 @@ public class GuiCurso extends javax.swing.JFrame {
             }
         });
 
-        jtxtDataVigencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jtxtDataVigencia.setText("  /  /    ");
+        try {
+            jtxtDataVigencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jtxtDataVigencia.setEnabled(false);
 
         txtNomeCurso.setEnabled(false);
@@ -255,7 +258,7 @@ public class GuiCurso extends javax.swing.JFrame {
                 txtNomeCurso.setText(curso.getNome());
                 txtCargaHoraria.setText(Integer.toString(curso.getCargaHoraria()));
                 txtValorCurso.setText(Double.toString(curso.getValor()));
-                jtxtDataVigencia.setText(curso.getDataVigencia().substring(0,2) + "/" + curso.getDataVigencia().substring(2,4) + "/" + curso.getDataVigencia().substring(4,8));
+                jtxtDataVigencia.setText(curso.getDataVigencia());
                 txtValorHoraInstrutor.setText(Double.toString(curso.getValorHoraInstrutor()));
                 txtProgramaCurso.setText(curso.getPrograma());
                 
@@ -367,7 +370,7 @@ public class GuiCurso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0){
+        if (JOptionPane.showConfirmDialog(null, "Confirma Exclusão?") == 0){
             daoCurso.excluir(curso); 
             
             txtSiglaCurso.setText("");

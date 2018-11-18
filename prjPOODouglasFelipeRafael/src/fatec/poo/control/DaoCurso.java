@@ -98,20 +98,4 @@ public class DaoCurso {
              System.out.println(ex.toString());   
         }
     }
-    public ArrayList<String> listarSiglas() {
-        PreparedStatement ps = null;
-        ArrayList<String> cursos = new ArrayList<String>();
-        try {
-            ps = conn.prepareStatement("SELECT sigla_curso from tbCurso");
-            
-            ResultSet rs = ps.executeQuery();
-                        
-            while(rs.next() == true) {
-                cursos.add(rs.getString("sigla_curso"));
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        }
-        return cursos;
-    } 
 }
