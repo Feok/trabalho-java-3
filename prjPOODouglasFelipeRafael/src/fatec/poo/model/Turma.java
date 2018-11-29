@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *
  * @author Dougla
  */
-public abstract class Turma {
+public class Turma {
     private String siglaTurma;
     private String descricao;
     private String dataInicio;
@@ -18,11 +18,21 @@ public abstract class Turma {
     private Curso curso;
     private ArrayList<Matricula> matriculas;
 
-    public Turma(String SiglaTurma) {
+    public Turma(String SiglaTurma, String descricao) {
         this.siglaTurma = SiglaTurma;
+        this.descricao = descricao;
         this.matriculas = new ArrayList<Matricula>(); 
     }
 
+    public void setSiglaTurma(String siglaTurma) {
+        this.siglaTurma = siglaTurma;
+    }
+
+    public void setMatriculas(ArrayList<Matricula> matriculas) {
+        this.matriculas = matriculas;
+    }
+
+    
     public void setDescricao(String Descricao) {
         this.descricao = Descricao;
     }
@@ -47,8 +57,10 @@ public abstract class Turma {
         this.observacoes = Observacoes;
     }
 
-    public abstract void emitirListaFrequencia();
-
+    public void emitirListaFrequencia() {
+        
+    }
+    
     void setInstrutor(Instrutor instrutor) {
         this.instrutor = instrutor;
     }
@@ -61,4 +73,45 @@ public abstract class Turma {
         matriculas.add(matricula);
         matricula.setTurma(this);
     }  
+
+    public String getSiglaTurma() {
+        return siglaTurma;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public String getDataInicio() {
+        return dataInicio;
+    }
+
+    public String getDataTermino() {
+        return dataTermino;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public int getQtdVagas() {
+        return qtdVagas;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public Instrutor getInstrutor() {
+        return instrutor;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public ArrayList<Matricula> getMatriculas() {
+        return matriculas;
+    }
+    
 }

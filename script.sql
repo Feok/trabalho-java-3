@@ -34,3 +34,15 @@ formacao_instrutor VARCHAR2(20),
 areaAtuacao_instrutor VARCHAR2(20),
 email_instrutor VARCHAR2(25)
 );
+
+CREATE TABLE tbTurma (
+sigla_turma VARCHAR2(2) NOT NULL
+	CONSTRAINT pk_turma PRIMARY KEY,
+siglaCurso_turma VARCHAR2(2),
+descricao_turma VARCHAR2(30),
+dataInicio_turma VARCHAR2(10), 
+dataTermino_turma VARCHAR2(10), 
+periodo_turma VARCHAR2(20), 
+qtdVagas_turma NUMBER(2), 
+observacoes_turma VARCHAR2(30) 
+);
