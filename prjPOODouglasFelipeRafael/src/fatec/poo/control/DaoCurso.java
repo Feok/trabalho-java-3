@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 public class DaoCurso {
 
     private Connection conn;
+    private ArrayList<String> cursos;
     
     public DaoCurso(Connection conn) {
          this.conn = conn;
@@ -97,5 +98,23 @@ public class DaoCurso {
         } catch (SQLException ex) {
              System.out.println(ex.toString());   
         }
+    }
+     
+    public ArrayList<String> listarSiglas(){
+        PreparedStatement ps=null;
+        try{
+            ps = conn.prepareStatement("SELECT sigla_curso from tbCurso");
+            
+            ResultSet rs = ps.executeQuery();
+
+            cursos = new ArrayList<String>();
+            
+            while(rs.next() == true){
+                cursos.add(rs.getString("sigla_curso"));
+            }
+        }catch (SQLException ex){
+            System.out.println(ex.toString());
+        }
+        return cursos;
     }
 }
