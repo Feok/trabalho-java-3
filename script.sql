@@ -46,3 +46,27 @@ periodo_turma VARCHAR2(20),
 qtdVagas_turma NUMBER(2), 
 observacoes_turma VARCHAR2(30) 
 );
+
+ALTER TABLE tbTurma
+    ADD CONSTRAINT fk_siglacurso FOREIGN KEY (siglaCurso_turma)
+        REFERENCES tbCurso (sigla_curso);
+
+CREATE TABLE tbAluno (
+cpf_aluno VARCHAR2(11) NOT NULL
+	CONSTRAINT pk_cpfAluno PRIMARY KEY,
+nome_aluno VARCHAR2(30),
+dataNasc_aluno VARCHAR2(8),
+sexo_aluno VARCHAR2(9),
+estadoCivil_aluno VARCHAR2(10),
+endereco_aluno VARCHAR2(30),
+numeroEnd_aluno NUMBER(5,0),
+bairro_aluno VARCHAR2(15),
+cep_aluno VARCHAR2(8),
+cidade_aluno VARCHAR2(15),
+estado_aluno VARCHAR2(2),
+telefone_aluno VARCHAR2(10),
+rg_aluno VARCHAR2(9),
+celular_aluno VARCHAR2(10),
+escolaridade_aluno VARCHAR2(20),
+email_aluno VARCHAR2(25)
+);

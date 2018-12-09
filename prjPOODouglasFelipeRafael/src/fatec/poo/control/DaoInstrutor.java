@@ -23,7 +23,7 @@ public class DaoInstrutor {
         try {
             ps = conn.prepareStatement("INSERT INTO tbInstrutor(cpf_instrutor,nome_instrutor,dataNasc_instrutor,sexo_instrutor,estadoCivil_instrutor,endereco_instrutor,"
                                      + "numeroEnd_instrutor,bairro_instrutor,cep_instrutor,cidade_instrutor,estado_instrutor,telefone_instrutor,rg_instrutor,"
-                                     + "celular_instrutor,formacao_instrutor,areaAtuacao_instrutor,email_instrutor) "
+                                     + "celular_instrutor,formacao_instrutor,areaAtuacao_instrutor,email_instrutor)"
                                      + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, instrutor.getCpf());
             ps.setString(2, instrutor.getNome());
@@ -84,7 +84,7 @@ public class DaoInstrutor {
     }
         
     public  Instrutor consultar (String cpf) {
-        Instrutor c = null;
+        Instrutor ins = null;
        
         PreparedStatement ps = null;
         try {
@@ -95,28 +95,28 @@ public class DaoInstrutor {
             ResultSet rs = ps.executeQuery();
            
             if (rs.next() == true) {
-                c = new Instrutor (cpf, rs.getString("nome_instrutor"));
-                c.setDataNasc(rs.getString("dataNasc_instrutor"));
-                c.setSexo(rs.getString("sexo_instrutor"));
-                c.setEstadoCivil(rs.getString("estadoCivil_instrutor"));
-                c.setEndereco(rs.getString("endereco_instrutor"));
-                c.setNumero(rs.getInt("numeroEnd_instrutor"));
-                c.setBairro(rs.getString("bairro_instrutor"));
-                c.setCEP(rs.getString("cep_instrutor"));
-                c.setCidade(rs.getString("cidade_instrutor"));
-                c.setEstado(rs.getString("estado_instrutor"));
-                c.setTelefone(rs.getString("telefone_instrutor"));
-                c.setRG(rs.getString("rg_instrutor"));
-                c.setCelular(rs.getString("celular_instrutor"));
-                c.setFormacao(rs.getString("formacao_instrutor"));
-                c.setAreaAtuacao(rs.getString("areaAtuacao_instrutor"));
-                c.setEmail(rs.getString("email_instrutor"));
+                ins = new Instrutor (cpf, rs.getString("nome_instrutor"));
+                ins.setDataNasc(rs.getString("dataNasc_instrutor"));
+                ins.setSexo(rs.getString("sexo_instrutor"));
+                ins.setEstadoCivil(rs.getString("estadoCivil_instrutor"));
+                ins.setEndereco(rs.getString("endereco_instrutor"));
+                ins.setNumero(rs.getInt("numeroEnd_instrutor"));
+                ins.setBairro(rs.getString("bairro_instrutor"));
+                ins.setCEP(rs.getString("cep_instrutor"));
+                ins.setCidade(rs.getString("cidade_instrutor"));
+                ins.setEstado(rs.getString("estado_instrutor"));
+                ins.setTelefone(rs.getString("telefone_instrutor"));
+                ins.setRG(rs.getString("rg_instrutor"));
+                ins.setCelular(rs.getString("celular_instrutor"));
+                ins.setFormacao(rs.getString("formacao_instrutor"));
+                ins.setAreaAtuacao(rs.getString("areaAtuacao_instrutor"));
+                ins.setEmail(rs.getString("email_instrutor"));
             }
         }
         catch (SQLException ex) { 
              System.out.println(ex.toString());   
         }
-        return (c);
+        return (ins);
     }    
      
      public void excluir(Instrutor instrutor) {

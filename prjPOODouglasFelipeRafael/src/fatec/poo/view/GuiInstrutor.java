@@ -147,7 +147,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
         txtEndereco.setEnabled(false);
 
         try {
-            jftxtRg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
+            jftxtRg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-*")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -344,7 +344,9 @@ public class GuiInstrutor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jftxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmbbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -367,10 +369,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblCurso)
-                                        .addGap(25, 25, 25)
-                                        .addComponent(jLabel2))
+                                    .addComponent(lblCurso)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(165, 165, 165)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -601,7 +600,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?")== 0){//Sim
+        if (JOptionPane.showConfirmDialog(null, "Confirma alteração?") == 0){
             instrutor.setNome(txtNome.getText());
             instrutor.setEndereco(txtEndereco.getText());
             instrutor.setDataNasc(jftxtDataNascto.getText().replace("/","").replace(" ", ""));
@@ -669,7 +668,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Confirma Exclusão?") == 0){
+        if (JOptionPane.showConfirmDialog(null, "Confirma exclusão?") == 0){
             daoInstrutor.excluir(instrutor);
             
             jftxtCpf.setText("");

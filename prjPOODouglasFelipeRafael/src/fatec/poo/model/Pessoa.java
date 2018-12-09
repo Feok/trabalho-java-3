@@ -167,8 +167,19 @@ public class Pessoa {
     
     public static boolean validarCPF(String cpf) {
         cpf = cpf.replace(".", "").replace("-","");
-        int priDigito=0, segDigito=0, multi;
-
+        int priDigito=0, segDigito=0, multi, repetido=0, ant=0, count=0;
+        
+        ant = parseInt(cpf.substring(0,1)); 
+        for (int i = 1; i < 9; i++){
+            repetido = parseInt(cpf.substring(i,(i+1))); 
+            if(ant == repetido) {
+                count++;
+            }
+        }
+        if (count == 8){
+            return false;
+        }
+        
         for(int i = 0; i < 9; i++) {
             multi = (i+1) * parseInt(cpf.substring(i,(i+1)));
             priDigito += multi;
